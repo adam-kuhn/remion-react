@@ -24,6 +24,8 @@ var app = app || {};
 	};
 
 	app.TodoModel.prototype.inform = function () {
+		//inform must be the link to subscribe
+		console.log('informing')
 		Utils.store(this.key, this.todos);
 		this.onChanges.forEach(function (cb) { cb(); });
 	};
@@ -52,6 +54,7 @@ var app = app || {};
 
 	app.TodoModel.prototype.toggle = function (todoToToggle) {
 		this.todos = this.todos.map(function (todo) {
+			console.log('model', todo.completed, !todo.completed)
 			return todo !== todoToToggle ?
 				todo :
 				Utils.extend({}, todo, {completed: !todo.completed});

@@ -7,7 +7,7 @@ var app = app || {};
 
 (function () {
 	'use strict';
-
+// actions?
 	app.ALL_TODOS = 'all';
 	app.ACTIVE_TODOS = 'active';
 	app.COMPLETED_TODOS = 'completed';
@@ -15,9 +15,10 @@ var app = app || {};
 	var TodoItem = app.TodoItem;
 
 	var ENTER_KEY = 13;
-
+// class based component being created
 	var TodoApp = React.createClass({
 		getInitialState: function () {
+			// creating state
 			return {
 				nowShowing: app.ALL_TODOS,
 				editing: null,
@@ -91,10 +92,13 @@ var app = app || {};
 
 			var shownTodos = todos.filter(function (todo) {
 				switch (this.state.nowShowing) {
+					// show todos that are not completed
 				case app.ACTIVE_TODOS:
 					return !todo.completed;
+					// show todos that are completed
 				case app.COMPLETED_TODOS:
 					return todo.completed;
+					// show all
 				default:
 					return true;
 				}
@@ -154,7 +158,7 @@ var app = app || {};
 			return (
 				<div>
 					<header className="header">
-						<h1>todos</h1>
+						<h1>Playing</h1>
 						<input
 							className="new-todo"
 							placeholder="What needs to be done?"
