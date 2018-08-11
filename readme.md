@@ -1,3 +1,5 @@
+part of a skill test. Cloned and took some notes on the code provided for my personal reference
+
 # ![TodoMVC](media/logo.png)
 
 > Helping you select an MV\* framework
