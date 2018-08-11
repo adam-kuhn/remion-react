@@ -17,6 +17,9 @@ var app = app || {};
 				if (i === 8 || i === 12 || i === 16 || i === 20) {
 					uuid += '-';
 				}
+				// not sure exactly what "random & 3 | 8" does, but it
+				// is the same as Math.random() & 16 | 0 & 3 | 8, when run
+				// in node I get numbers from 8-15, so not sure what the 3 is doing
 				uuid += (i === 12 ? 4 : (i === 16 ? (random & 3 | 8) : random))
 					.toString(16);
 			}
