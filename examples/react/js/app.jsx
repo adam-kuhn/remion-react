@@ -174,7 +174,7 @@ var app = app || {};
 			return (
 				<div>
 					<header className="header">
-						<h1>Title</h1>
+						<h1>My Tasks</h1>
 						<input
 							className="new-todo"
 							placeholder="What needs to be done?"
