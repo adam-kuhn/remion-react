@@ -54,10 +54,17 @@ var app = app || {};
 
 	app.TodoModel.prototype.toggle = function (todoToToggle) {
 		this.todos = this.todos.map(function (todo) {
+			let timeStamp = ''
+			if (!todo.completed) {
+				const date = new Date()
+				const day = date.getFullYear() + '-' + (date.getMonth()+1) + '-'+ date.getDate();
+				const time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+				timeStamp = day + ' ' + time			}
 			console.log('model', todo.completed, !todo.completed)
 			return todo !== todoToToggle ?
 				todo :
-				Utils.extend({}, todo, {completed: !todo.completed});
+				Utils.extend({}, todo, {completed: !todo.completed,
+				timeStamp});
 		});
 
 		this.inform();
