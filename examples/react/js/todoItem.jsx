@@ -92,6 +92,7 @@ var app = app || {};
               <label onDoubleClick={this.handleEdit}>
                 {this.props.todo.title}
               </label>
+							<p>Time Completed: {this.props.todo.timeStamp}</p>
               <button className="destroy" onClick={this.props.onDestroy} />
             </div>
             <input
