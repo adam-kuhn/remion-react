@@ -15,9 +15,15 @@ var app = app || {};
 	var TodoItem = app.TodoItem;
 
 	var NewComponent = React.createClass({
+		logOnClick: function () {
+			console.log('button was clicked')
+		},
 		render: function () {
 			return (
+				<div>
 				<p>this is a new component</p>
+				<button type='button' onClick={this.logOnClick}>Test Button </button>
+				</div>
 			)
 		}
 	})
