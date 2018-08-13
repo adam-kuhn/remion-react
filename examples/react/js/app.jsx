@@ -14,6 +14,13 @@ var app = app || {};
 	var TodoFooter = app.TodoFooter;
 	var TodoItem = app.TodoItem;
 
+	var NewComponent = React.createClass({
+		render: function () {
+			return (
+				<p>this is a new component</p>
+			)
+		}
+	})
 	var ENTER_KEY = 13;
 // class based component being created
 	var TodoApp = React.createClass({
@@ -106,6 +113,7 @@ var app = app || {};
 
 			var todoItems = shownTodos.map(function (todo) {
 				return (
+					<div>
 					<TodoItem
 						key={todo.id}
 						todo={todo}
@@ -116,6 +124,8 @@ var app = app || {};
 						onSave={this.save.bind(this, todo)}
 						onCancel={this.cancel}
 					/>
+					<NewComponent />
+					</div>
 				);
 			}, this);
 
