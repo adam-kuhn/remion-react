@@ -1,3 +1,4 @@
+
 .title {
   position: absolute;
   top: -155px;
@@ -14,3 +15,13 @@
 img {
   height: 40px;
 }
+
+.todo {
+  color: red;
+}
+
+.todo-list li.completed label {
+  color: green;
+  text-decoration: line-through;
+}
+
