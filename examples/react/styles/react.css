@@ -1,0 +1,16 @@
+.title {
+  position: absolute;
+  top: -155px;
+  display: flex;
+  align-items: center;
+}
+
+.title h1 {
+  position: relative;
+  top: unset;
+  font-size: 6rem;
+}
+
+img {
+  height: 40px;
+}
