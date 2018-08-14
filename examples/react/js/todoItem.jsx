@@ -14,10 +14,12 @@ var app = app || {};
   const AreYouSure = React.createClass({
     render: function () {
       return (
-        <div>
+        <div className='are-you-sure'>
           <p>Are you sure, you want to delete this item?</p>
-          <button type='button' onClick={this.props.destroy}>YES</button>
-          <button type='button' onClick={this.props.doNotDestroy}>NO</button>
+          <div className='confirm'>
+            <button type='button' onClick={this.props.destroy}>YES</button>
+            <button type='button' onClick={this.props.doNotDestroy}>NO</button>
+          </div>
         </div>
       )
     }
@@ -91,12 +93,12 @@ var app = app || {};
       this.setState({
         areYouSure: true
       })
-		},
-		doNotDestroy: function () {
-			this.setState({
-				areYouSure: false
-			})
-		},
+    },
+    doNotDestroy: function () {
+      this.setState({
+        areYouSure: false
+      })
+    },
 
     render: function () {
       return (
@@ -117,8 +119,8 @@ var app = app || {};
               </label>
               <p>Time Completed: {this.props.todo.timeStamp}</p>
               <button className='destroy' onClick={this.areYouSure} />
-							{this.state.areYouSure && <AreYouSure destroy={this.props.onDestroy}
-							doNotDestroy={this.doNotDestroy} />}
+              {this.state.areYouSure && <AreYouSure destroy={this.props.onDestroy}
+                doNotDestroy={this.doNotDestroy} />}
               {/* // <div>
 							// 	<p>Are you sure?</p>
               // <button onClick={this.props.onDestroy}>Rmv</button>
