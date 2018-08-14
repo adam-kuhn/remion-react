@@ -3,48 +3,62 @@
 /* jshint trailing: false */
 /* jshint newcap: false */
 /* global React */
+
 var app = app || {};
 
 (function () {
   'use strict'
 
-	var ESCAPE_KEY = 27
-	var ENTER_KEY = 13
-
-	app.TodoItem = React.createClass({
+  var ESCAPE_KEY = 27
+  var ENTER_KEY = 13
+  const AreYouSure = React.createClass({
+    render: function () {
+      return (
+        <div className='are-you-sure'>
+          <p>Are you sure, you want to delete this item?</p>
+          <div className='confirm'>
+            <button type='button' onClick={this.props.destroy}>YES</button>
+            <button type='button' onClick={this.props.doNotDestroy}>NO</button>
+          </div>
+        </div>
+      )
+    }
+  })
+  app.TodoItem = React.createClass({
     handleSubmit: function (event) {
       var val = this.state.editText.trim()
-			if (val) {
+      if (val) {
         this.props.onSave(val)
-				this.setState({editText: val})
-			} else {
+        this.setState({editText: val})
+      } else {
         this.props.onDestroy()
-			}
+      }
     },
 
     handleEdit: function () {
       this.props.onEdit()
-			this.setState({editText: this.props.todo.title})
-		},
+      this.setState({editText: this.props.todo.title})
+    },
 
     handleKeyDown: function (event) {
       if (event.which === ESCAPE_KEY) {
         this.setState({editText: this.props.todo.title})
-				this.props.onCancel(event)
-			} else if (event.which === ENTER_KEY) {
+        this.props.onCancel(event)
+      } else if (event.which === ENTER_KEY) {
         this.handleSubmit(event)
-			}
+      }
     },
 
     handleChange: function (event) {
       if (this.props.editing) {
         this.setState({editText: event.target.value})
-			}
+      }
     },
 
     getInitialState: function () {
-      return {editText: this.props.todo.title}
-		},
+      return {editText: this.props.todo.title,
+        areYouSure: false}
+    },
 
     /**
 		 * This is a completely optional performance enhancement that you can
@@ -57,9 +71,10 @@ var app = app || {};
       return (
         nextProps.todo !== this.props.todo ||
 				nextProps.editing !== this.props.editing ||
-				nextState.editText !== this.state.editText
+				nextState.editText !== this.state.editText ||
+				nextState.areYouSure !== this.state.areYouSure
       )
-		},
+    },
 
     /**
 		 * Safely manipulate the DOM after updating the state when invoking
@@ -70,9 +85,19 @@ var app = app || {};
     componentDidUpdate: function (prevProps) {
       if (!prevProps.editing && this.props.editing) {
         var node = React.findDOMNode(this.refs.editField)
-				node.focus()
-				node.setSelectionRange(node.value.length, node.value.length)
-			}
+        node.focus()
+        node.setSelectionRange(node.value.length, node.value.length)
+      }
+    },
+    areYouSure: function () {
+      this.setState({
+        areYouSure: true
+      })
+    },
+    doNotDestroy: function () {
+      this.setState({
+        areYouSure: false
+      })
     },
 
     render: function () {
@@ -92,8 +117,14 @@ var app = app || {};
               <label onDoubleClick={this.handleEdit}>
                 {this.props.todo.title}
               </label>
-							<p>Time Completed: {this.props.todo.timeStamp}</p>
-              <button className="destroy" onClick={this.props.onDestroy} />
+              <p>Time Completed: {this.props.todo.timeStamp}</p>
+              <button className='destroy' onClick={this.areYouSure} />
+              {this.state.areYouSure && <AreYouSure destroy={this.props.onDestroy}
+                doNotDestroy={this.doNotDestroy} />}
+              {/* // <div>
+							// 	<p>Are you sure?</p>
+              // <button onClick={this.props.onDestroy}>Rmv</button>
+							// 	</div>} */}
             </div>
             <input
               ref="editField"
@@ -106,6 +137,6 @@ var app = app || {};
           </li>
         </div>
       )
-		}
+    }
   })
 })()

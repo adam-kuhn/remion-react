@@ -130,7 +130,7 @@ var app = app || {};
               onSave={this.save.bind(this, todo)}
               onCancel={this.cancel}
             />
-            <NewComponent />
+            {this.state.areYouSure && <NewComponent />}
           </div>
         )
       }, this)
