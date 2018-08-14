@@ -39,9 +39,22 @@ var app = app || {};
   app.TodoItem = React.createClass({
     handleSubmit: function (event) {
       var val = this.state.editText.trim()
-      if (val) {
+			const allTodos = this.props.todos
+
+      const duplicate = allTodos.filter(todo => {
+        return todo.title === val
+			})
+			console.log(allTodos)
+			console.log(duplicate)
+      if (duplicate.length >= 1) {
+        this.setState({
+          editDupe: true
+        })
+      } else if (val) {
         this.props.onSave(val)
-        this.setState({editText: val})
+        this.setState({editText: val,
+          editDupe: false
+        })
       } else {
         this.props.onDestroy()
       }
@@ -84,7 +97,7 @@ var app = app || {};
         nextProps.todo !== this.props.todo ||
 				nextProps.editing !== this.props.editing ||
 				nextState.editText !== this.state.editText ||
-				nextState.areYouSure !== this.state.areYouSure
+				nextState.areYouSure !== this.state.areYouSure 
       )
     },
 
@@ -142,6 +155,7 @@ var app = app || {};
               onChange={this.handleChange}
               onKeyDown={this.handleKeyDown}
             />
+            {this.state.editDupe && <p>error</p>}
           </li>
         </div>
       )

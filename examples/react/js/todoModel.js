@@ -25,7 +25,6 @@ var app = app || {};
 
 	app.TodoModel.prototype.inform = function () {
 		//inform must be the link to subscribe
-		console.log('informing')
 		Utils.store(this.key, this.todos);
 		this.onChanges.forEach(function (cb) { cb(); });
 	};
@@ -60,7 +59,6 @@ var app = app || {};
 				const day = date.getFullYear() + '-' + (date.getMonth()+1) + '-'+ date.getDate();
 				const time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
 				timeStamp = day + ' ' + time			}
-			console.log('model', todo.completed, !todo.completed)
 			return todo !== todoToToggle ?
 				todo :
 				Utils.extend({}, todo, {completed: !todo.completed,

@@ -92,8 +92,24 @@ var app = app || {};
     },
 
     save: function (todoToSave, text) {
-      this.props.model.save(todoToSave, text)
-      this.setState({editing: null})
+      // const allTodos = this.props.model.todos
+      // let duplicate = allTodos.filter(todo => {
+      //   return todo.title === text
+			// })
+			// console.log('dupe', duplicate)
+      // if (duplicate.length >= 1) {
+      //   console.log('here')
+      //   this.setState({
+      //     editDupe: 'This task you are editing already exists'
+      //   })
+      // } else {
+      //   this.props.model.save(todoToSave, text)
+      //   this.setState({editing: null,
+      //     editDupe: ''})
+			// }
+			this.props.model.save(todoToSave, text)
+			this.setState({editing: null,
+				editDupe: ''})
     },
 
     cancel: function () {
@@ -134,9 +150,9 @@ var app = app || {};
               onEdit={this.edit.bind(this, todo)}
               editing={this.state.editing === todo.id}
               onSave={this.save.bind(this, todo)}
-              onCancel={this.cancel}
+							onCancel={this.cancel}
+							todos={todos}
             />
-            {this.state.areYouSure && <NewComponent />}
           </div>
         )
       }, this)
@@ -182,9 +198,10 @@ var app = app || {};
           <header className="header">
             <div className="title">
               <img src='./styles/images/logo_remion.png' />
-              <h1>My Tasks</h1>						
+              <h1>My Tasks</h1>
             </div>
-						<p>{this.state.duplicate}</p>
+            <p>{this.state.duplicate}</p>
+            <p>{this.state.editDupe}</p>
             <input
               className="new-todo"
               placeholder="What needs to be done?"
