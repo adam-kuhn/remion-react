@@ -25,20 +25,4 @@ img {
   text-decoration: line-through;
 }
 
-.are-you-sure {
- color: #af9395;
-}
-.confirm {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.confirm button {
-  background: #c7b7b7;
-  padding: 1rem;
-  border-radius: 1.5rem;
-  font-weight: 400;
-  color: #585809;
-}
-
 

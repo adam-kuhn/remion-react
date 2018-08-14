@@ -14,12 +14,24 @@ var app = app || {};
   const AreYouSure = React.createClass({
     render: function () {
       return (
-        <div className='are-you-sure'>
-          <p>Are you sure, you want to delete this item?</p>
-          <div className='confirm'>
-            <button type='button' onClick={this.props.destroy}>YES</button>
-            <button type='button' onClick={this.props.doNotDestroy}>NO</button>
-          </div>
+        <div>
+          {swal({
+            title: 'Are you sure?',
+            text: 'This item will be permanently deleted!',
+            icon: 'warning',
+            buttons: true,
+            dangerMode: true
+          })
+            .then((yesDelete) => {
+              if (yesDelete) {
+                this.props.destroy()
+                swal('POOF!', 'The task is gone.', 'success')
+                this.props.reset()
+              } else {
+                swal('OK!', 'You will finish this task one day...', 'info')
+                this.props.reset()
+              }
+            })}
         </div>
       )
     }
@@ -94,7 +106,7 @@ var app = app || {};
         areYouSure: true
       })
     },
-    doNotDestroy: function () {
+    reset: function () {
       this.setState({
         areYouSure: false
       })
@@ -120,11 +132,7 @@ var app = app || {};
               <p>Time Completed: {this.props.todo.timeStamp}</p>
               <button className='destroy' onClick={this.areYouSure} />
               {this.state.areYouSure && <AreYouSure destroy={this.props.onDestroy}
-                doNotDestroy={this.doNotDestroy} />}
-              {/* // <div>
-							// 	<p>Are you sure?</p>
-              // <button onClick={this.props.onDestroy}>Rmv</button>
-							// 	</div>} */}
+                reset={this.reset} />}
             </div>
             <input
               ref="editField"
