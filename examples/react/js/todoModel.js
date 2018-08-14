@@ -78,6 +78,10 @@ var app = app || {};
 
 	app.TodoModel.prototype.save = function (todoToSave, text) {
 		this.todos = this.todos.map(function (todo) {
+			if (todo.title === text) {
+				console.log('here')
+				return Utils.extend({}, todo, {editDupe: 'error'})
+			}
 			return todo !== todoToSave ? todo : Utils.extend({}, todo, {title: text});
 		});
 
