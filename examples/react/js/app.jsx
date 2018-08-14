@@ -61,10 +61,16 @@ var app = app || {};
       event.preventDefault()
 
       var val = this.state.newTodo.trim()
-
-      if (val) {
+      const todos = this.props.model.todos
+      const duplicate = todos.filter(todo => {
+        return todo.title === val
+      })
+      if (duplicate.length >= 1) {
+        this.setState({duplicate: 'This task has already been added. Please add a new task.'})
+      } else if (val) {
         this.props.model.addTodo(val)
-        this.setState({newTodo: ''})
+        this.setState({newTodo: '',
+          duplicate: ''})
       }
     },
 
@@ -176,8 +182,9 @@ var app = app || {};
           <header className="header">
             <div className="title">
               <img src='./styles/images/logo_remion.png' />
-              <h1> My Tasks</h1>
+              <h1>My Tasks</h1>						
             </div>
+						<p>{this.state.duplicate}</p>
             <input
               className="new-todo"
               placeholder="What needs to be done?"
