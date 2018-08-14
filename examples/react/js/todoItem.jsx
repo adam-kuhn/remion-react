@@ -14,7 +14,7 @@ var app = app || {};
   const AreYouSure = React.createClass({
     render: function () {
       return (
-        <div className='are-you-sure'>
+        <div>
           {swal({
             title: 'Are you sure?',
             text: 'This item will be permanently deleted!',
@@ -24,13 +24,13 @@ var app = app || {};
           })
             .then((yesDelete) => {
               if (yesDelete) {
-								this.props.destroy()
-								swal('POOF!', 'The task is gone.', 'success')
-								this.props.reset()
+                this.props.destroy()
+                swal('POOF!', 'The task is gone.', 'success')
+                this.props.reset()
               } else {
-								swal('OK!', 'You will finish this task one day...', 'info')
-								this.props.reset()
-							}
+                swal('OK!', 'You will finish this task one day...', 'info')
+                this.props.reset()
+              }
             })}
         </div>
       )
