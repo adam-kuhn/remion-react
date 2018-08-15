@@ -13,48 +13,9 @@ var app = app || {};
   app.COMPLETED_TODOS = 'completed'
   var TodoFooter = app.TodoFooter
   var TodoItem = app.TodoItem
+  var PriorityDropDown = app.PriorityDropDown
 
   var ENTER_KEY = 13
-
-  const PriorityDropDown = React.createClass({
-    getInitialState: function () {
-      return {
-        showMenu: false
-      }
-    },
-
-    componentDidMount: function () {
-      if (!this.props.todo.priority) {
-        this.props.todo.priority = 6
-      }
-    },
-
-    openMenu: function () {
-      const openClose = this.state.showMenu
-      this.setState({
-        showMenu: !openClose
-      })
-    },
-    setPriority: function (event) {
-      this.props.todo.priority = Number(event.target.value)
-      this.props.update()
-    },
-    render: function () {
-      return (
-        <div>
-          <button type='button' onClick={this.openMenu}>Priority</button>
-          {this.state.showMenu &&
-				<div>
-				  <button type='button' onClick={this.setPriority} value={1}>1</button>
-				  <button type='button' onClick={this.setPriority} value={2}>2</button>
-				  <button type='button' onClick={this.setPriority} value={3}>3</button>
-				  <button type='button' onClick={this.setPriority} value={4}>4</button>
-				  <button type='button' onClick={this.setPriority} value={5}>5</button>
-				</div>}
-        </div>
-      )
-    }
-  })
 
   const DuplicateAlert = React.createClass({
     render: function () {
