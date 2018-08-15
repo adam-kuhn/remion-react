@@ -14,19 +14,6 @@ var app = app || {};
   var TodoFooter = app.TodoFooter
   var TodoItem = app.TodoItem
 
-  var NewComponent = React.createClass({
-    logOnClick: function () {
-      console.log('button was clicked')
-    },
-    render: function () {
-      return (
-        <div>
-          <p>this is a new component</p>
-          <button type='button' onClick={this.logOnClick}>Test Button </button>
-        </div>
-      )
-    }
-  })
   var ENTER_KEY = 13
   // class based component being created
   var TodoApp = React.createClass({
@@ -136,7 +123,6 @@ var app = app || {};
               onSave={this.save.bind(this, todo)}
               onCancel={this.cancel}
             />
-            {this.state.areYouSure && <NewComponent />}
           </div>
         )
       }, this)
