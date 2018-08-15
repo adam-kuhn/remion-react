@@ -22,11 +22,20 @@ var app = app || {};
         showMenu: false
       }
     },
+
+    componentDidMount: function () {
+      this.props.todo.priority = 6
+    },
+
     openMenu: function () {
       const openClose = this.state.showMenu
       this.setState({
         showMenu: !openClose
       })
+    },
+    setPriority: function (event) {
+      this.props.todo.priority = Number(event.target.value)
+      this.props.update()
     },
     render: function () {
       return (
@@ -64,7 +73,8 @@ var app = app || {};
       return {
         nowShowing: app.ALL_TODOS,
         editing: null,
-        newTodo: ''
+        newTodo: '',
+        update: 1
       }
     },
 
@@ -140,6 +150,13 @@ var app = app || {};
       })
     },
 
+    update: function () {
+      const val = this.state.update * -1
+      this.setState({
+        update: val
+      })
+    },
+
     render: function () {
       var footer
       var main
@@ -158,7 +175,17 @@ var app = app || {};
             return true
         }
       }, this)
-
+      function compare (a, b) {
+        if (a.priority < b.priority) {
+          return -1
+        }
+        if (a.priority > b.priority) {
+          return 1
+        }
+        return 0
+      }
+      shownTodos.sort(compare)
+      console.log(shownTodos)
       var todoItems = shownTodos.map(function (todo) {
         return (
           <div>
@@ -172,7 +199,7 @@ var app = app || {};
               onSave={this.save.bind(this, todo)}
               onCancel={this.cancel}
             />
-            <PriorityDropDown />
+            <PriorityDropDown todo={todo} update={this.update}/>
           </div>
         )
       }, this)
