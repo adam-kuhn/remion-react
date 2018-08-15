@@ -16,6 +16,35 @@ var app = app || {};
 
   var ENTER_KEY = 13
 
+  const PriorityDropDown = React.createClass({
+    getInitialState: function () {
+      return {
+        showMenu: false
+      }
+    },
+    openMenu: function () {
+      const openClose = this.state.showMenu
+      this.setState({
+        showMenu: !openClose
+      })
+    },
+    render: function () {
+      return (
+        <div>
+          <button type='button' onClick={this.openMenu}>Priority</button>
+          {this.state.showMenu &&
+				<div>
+				  <button type='button' onClick={this.setPriority} value={1}>1</button>
+				  <button type='button' onClick={this.setPriority} value={2}>2</button>
+				  <button type='button' onClick={this.setPriority} value={3}>3</button>
+				  <button type='button' onClick={this.setPriority} value={4}>4</button>
+				  <button type='button' onClick={this.setPriority} value={5}>5</button>
+				</div>}
+        </div>
+      )
+    }
+  })
+
   const DuplicateAlert = React.createClass({
     render: function () {
       return (
@@ -143,6 +172,7 @@ var app = app || {};
               onSave={this.save.bind(this, todo)}
               onCancel={this.cancel}
             />
+            <PriorityDropDown />
           </div>
         )
       }, this)

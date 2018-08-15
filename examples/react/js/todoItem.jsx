@@ -10,7 +10,8 @@ var app = app || {};
   'use strict'
 
   var ESCAPE_KEY = 27
-  var ENTER_KEY = 13
+	var ENTER_KEY = 13
+
   const AreYouSure = React.createClass({
     render: function () {
       return (
