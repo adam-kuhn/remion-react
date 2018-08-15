@@ -162,7 +162,7 @@ var app = app || {};
               onSave={this.save.bind(this, todo)}
               onCancel={this.cancel}
             />
-            <PriorityDropDown todo={todo} update={this.update}/>
+            <PriorityDropDown todo={todo} update={this.update} priority={5}/>
           </div>
         )
       }, this)
