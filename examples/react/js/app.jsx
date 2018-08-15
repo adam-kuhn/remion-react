@@ -14,21 +14,21 @@ var app = app || {};
   var TodoFooter = app.TodoFooter
   var TodoItem = app.TodoItem
 
-  var NewComponent = React.createClass({
-    logOnClick: function () {
-      console.log('button was clicked')
-    },
+  var ENTER_KEY = 13
+
+  const DuplicateAlert = React.createClass({
     render: function () {
       return (
         <div>
-          <p>this is a new component</p>
-          <button type='button' onClick={this.logOnClick}>Test Button </button>
+          {swal('Oops!', 'This task has already been entered. Please enter a new task.', 'info')
+            .then(() => {
+              this.props.reset()
+            })}
         </div>
       )
     }
   })
-  var ENTER_KEY = 13
-  // class based component being created
+
   var TodoApp = React.createClass({
     getInitialState: function () {
       // creating state
@@ -61,10 +61,17 @@ var app = app || {};
       event.preventDefault()
 
       var val = this.state.newTodo.trim()
-
-      if (val) {
+      const todos = this.props.model.todos
+      const duplicate = todos.filter(todo => {
+        return todo.title === val
+      })
+      if (duplicate.length >= 1) {
+        this.setState({newTodo: '',
+          duplicate: true})
+      } else if (val) {
         this.props.model.addTodo(val)
-        this.setState({newTodo: ''})
+        this.setState({newTodo: '',
+          duplicate: false})
       }
     },
 
@@ -96,6 +103,12 @@ var app = app || {};
 
     clearCompleted: function () {
       this.props.model.clearCompleted()
+    },
+
+    resetDuplicate: function () {
+      this.setState({
+        duplicate: false
+      })
     },
 
     render: function () {
@@ -130,7 +143,6 @@ var app = app || {};
               onSave={this.save.bind(this, todo)}
               onCancel={this.cancel}
             />
-            {this.state.areYouSure && <NewComponent />}
           </div>
         )
       }, this)
@@ -176,8 +188,9 @@ var app = app || {};
           <header className="header">
             <div className="title">
               <img src='./styles/images/logo_remion.png' />
-              <h1> My Tasks</h1>
+              <h1>My Tasks</h1>
             </div>
+            {this.state.duplicate && <DuplicateAlert reset={this.resetDuplicate}/>}
             <input
               className="new-todo"
               placeholder="What needs to be done?"
