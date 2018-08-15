@@ -34,15 +34,12 @@ var app = app || {};
       return (
         <div>
           <button type='button' onClick={this.openMenu}>Priority</button>
-          {this.state.showMenu && Priority}
+          {this.state.showMenu &&
+            <div className='drop-down'>
+              {Priority}
+            </div>}
         </div>
       )
-
-      //     {/* <button type='button' onClick={this.setPriority} value={2}>2</button>
-      //     <button type='button' onClick={this.setPriority} value={3}>3</button>
-      //     <button type='button' onClick={this.setPriority} value={4}>4</button>
-      //     <button type='button' onClick={this.setPriority} value={5}>5</button> */}
-      // )
     }
   })
 })()
