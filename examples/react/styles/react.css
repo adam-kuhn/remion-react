@@ -25,14 +25,39 @@ img {
   text-decoration: line-through;
 }
 
+.todo-item {
+  display: flex;
+  justify-content: space-between
+}
+
+.priority {
+  font-size: 1.3rem;
+  height: 3rem;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.priority p {
+  margin-right: 1rem;
+}
+
+.menu-btn {
+  background-color: #c8c8e2;
+  padding: 0.8rem;
+  margin-right: 0.6rem;
+  border-radius: 0.8rem;
+}
+
 .drop-down {
   position: absolute;
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
-  font-size: 1.3rem;
   background-color: #90b2d2;
-  width: 5rem;
+  width: 5.2rem;
+  padding: 1rem 0;
+  margin-left: -0.63rem;
+  margin-top: 3rem;
   border-radius: 1rem;
   z-index: 1;
 }

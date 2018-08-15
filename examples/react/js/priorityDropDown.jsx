@@ -35,8 +35,8 @@ var app = app || {};
         Priority.push(<button key={`p${i}`} type='button' onClick={this.setPriority} value={i + 1}>{i + 1}</button>)
       }
       return (
-        <div>
-          <button type='button' onClick={this.openMenu}>Priority</button>
+        <div className='priority'>
+          <button className='menu-btn' type='button' onClick={this.openMenu}>Priority</button>
           <p>{this.props.todo.priority === 6 ? '' : this.props.todo.priority}</p>
           {this.state.showMenu &&
             <div className='drop-down'>

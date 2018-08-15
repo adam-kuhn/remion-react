@@ -151,18 +151,22 @@ var app = app || {};
       console.log(shownTodos)
       var todoItems = shownTodos.map(function (todo) {
         return (
-          <div>
-            <TodoItem
-              key={todo.id}
-              todo={todo}
-              onToggle={this.toggle.bind(this, todo)}
-              onDestroy={this.destroy.bind(this, todo)}
-              onEdit={this.edit.bind(this, todo)}
-              editing={this.state.editing === todo.id}
-              onSave={this.save.bind(this, todo)}
-              onCancel={this.cancel}
-            />
-            <PriorityDropDown todo={todo} update={this.update} priority={5}/>
+          <div className='todo-item'>
+            <div>
+              <TodoItem
+                key={todo.id}
+                todo={todo}
+                onToggle={this.toggle.bind(this, todo)}
+                onDestroy={this.destroy.bind(this, todo)}
+                onEdit={this.edit.bind(this, todo)}
+                editing={this.state.editing === todo.id}
+                onSave={this.save.bind(this, todo)}
+                onCancel={this.cancel}
+              />
+            </div>
+            <div>
+              <PriorityDropDown todo={todo} update={this.update} priority={5}/>
+            </div>
           </div>
         )
       }, this)
