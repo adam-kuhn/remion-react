@@ -15,7 +15,20 @@ var app = app || {};
   var TodoItem = app.TodoItem
 
   var ENTER_KEY = 13
-  // class based component being created
+
+  const DuplicateAlert = React.createClass({
+    render: function () {
+      return (
+        <div>
+          {swal('Oops!', 'This task has already been entered. Please enter a new task.', 'info')
+            .then(() => {
+              this.props.reset()
+            })}
+        </div>
+      )
+    }
+  })
+
   var TodoApp = React.createClass({
     getInitialState: function () {
       // creating state
@@ -53,11 +66,12 @@ var app = app || {};
         return todo.title === val
       })
       if (duplicate.length >= 1) {
-        this.setState({duplicate: 'This task has already been added. Please add a new task.'})
+        this.setState({newTodo: '',
+          duplicate: true})
       } else if (val) {
         this.props.model.addTodo(val)
         this.setState({newTodo: '',
-          duplicate: ''})
+          duplicate: false})
       }
     },
 
@@ -89,6 +103,12 @@ var app = app || {};
 
     clearCompleted: function () {
       this.props.model.clearCompleted()
+    },
+
+    resetDuplicate: function () {
+      this.setState({
+        duplicate: false
+      })
     },
 
     render: function () {
@@ -168,9 +188,9 @@ var app = app || {};
           <header className="header">
             <div className="title">
               <img src='./styles/images/logo_remion.png' />
-              <h1>My Tasks</h1>						
+              <h1>My Tasks</h1>
             </div>
-						<p>{this.state.duplicate}</p>
+            {this.state.duplicate && <DuplicateAlert reset={this.resetDuplicate}/>}
             <input
               className="new-todo"
               placeholder="What needs to be done?"
