@@ -24,7 +24,9 @@ var app = app || {};
     },
 
     componentDidMount: function () {
-      this.props.todo.priority = 6
+      if (!this.props.todo.priority) {
+        this.props.todo.priority = 6
+      }
     },
 
     openMenu: function () {
