@@ -25,6 +25,9 @@ var app = app || {};
     setPriority: function (event) {
       this.props.todo.priority = Number(event.target.value)
       this.props.update()
+      this.setState({
+        showMenu: false
+      })
     },
     render: function () {
       let Priority = []
@@ -34,6 +37,7 @@ var app = app || {};
       return (
         <div>
           <button type='button' onClick={this.openMenu}>Priority</button>
+          <p>{this.props.todo.priority === 6 ? '' : this.props.todo.priority}</p>
           {this.state.showMenu &&
             <div className='drop-down'>
               {Priority}
