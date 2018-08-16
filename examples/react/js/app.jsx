@@ -191,7 +191,7 @@ var app = app || {};
       if (todos.length) {
         main = (
           <section className="main">
-            <ExportTasks />
+            <ExportTasks todos={todos}/>
             <input
               id="toggle-all"
               className="toggle-all"
