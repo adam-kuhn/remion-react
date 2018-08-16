@@ -191,6 +191,7 @@ var app = app || {};
       if (todos.length) {
         main = (
           <section className="main">
+            <ImportTasks />
             <input
               id="toggle-all"
               className="toggle-all"
@@ -215,7 +216,7 @@ var app = app || {};
               <img src='./styles/images/logo_remion.png' />
               <h1>My Tasks</h1>
             </div>
-            <ImportTasks />
+
             {this.state.duplicate && <DuplicateAlert reset={this.resetDuplicate}/>}
             <input
               className="new-todo"
