@@ -13,6 +13,7 @@ var app = app || {};
   app.COMPLETED_TODOS = 'completed'
   var TodoFooter = app.TodoFooter
   var TodoItem = app.TodoItem
+  var PriorityDropDown = app.PriorityDropDown
 
   var ENTER_KEY = 13
 
@@ -35,7 +36,8 @@ var app = app || {};
       return {
         nowShowing: app.ALL_TODOS,
         editing: null,
-        newTodo: ''
+        newTodo: '',
+        update: 1
       }
     },
 
@@ -111,6 +113,13 @@ var app = app || {};
       })
     },
 
+    update: function () {
+      const val = this.state.update * -1
+      this.setState({
+        update: val
+      })
+    },
+
     render: function () {
       var footer
       var main
@@ -129,20 +138,35 @@ var app = app || {};
             return true
         }
       }, this)
-
+      function compare (a, b) {
+        if (a.priority < b.priority) {
+          return -1
+        }
+        if (a.priority > b.priority) {
+          return 1
+        }
+        return 0
+      }
+      shownTodos.sort(compare)
+      console.log(shownTodos)
       var todoItems = shownTodos.map(function (todo) {
         return (
-          <div>
-            <TodoItem
-              key={todo.id}
-              todo={todo}
-              onToggle={this.toggle.bind(this, todo)}
-              onDestroy={this.destroy.bind(this, todo)}
-              onEdit={this.edit.bind(this, todo)}
-              editing={this.state.editing === todo.id}
-              onSave={this.save.bind(this, todo)}
-              onCancel={this.cancel}
-            />
+          <div className='todo-item'>
+            <div>
+              <TodoItem
+                key={todo.id}
+                todo={todo}
+                onToggle={this.toggle.bind(this, todo)}
+                onDestroy={this.destroy.bind(this, todo)}
+                onEdit={this.edit.bind(this, todo)}
+                editing={this.state.editing === todo.id}
+                onSave={this.save.bind(this, todo)}
+                onCancel={this.cancel}
+              />
+            </div>
+            <div>
+              <PriorityDropDown todo={todo} update={this.update} priority={5}/>
+            </div>
           </div>
         )
       }, this)
