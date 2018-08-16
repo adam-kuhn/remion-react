@@ -14,6 +14,7 @@ var app = app || {};
   var TodoFooter = app.TodoFooter
   var TodoItem = app.TodoItem
   var PriorityDropDown = app.PriorityDropDown
+  var ExportTasks = app.ExportTasks
 
   var ENTER_KEY = 13
 
@@ -190,6 +191,7 @@ var app = app || {};
       if (todos.length) {
         main = (
           <section className="main">
+            <ExportTasks />
             <input
               id="toggle-all"
               className="toggle-all"
