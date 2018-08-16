@@ -50,6 +50,13 @@ img {
   border-width: 0.1rem;
 }
 
+.menu-btn:hover {
+  border-style: solid;
+  border-color: #deb3b3;
+  border-width: 0.1rem;
+  background: #eae0e0b5;
+}
+
 .drop-down {
   position: absolute;
   display: flex;
@@ -64,6 +71,13 @@ img {
   border-style: solid;
   border-color: #868697;
   border-width: 0.1rem;
+}
+
+.drop-down button:hover {
+  border-style: solid;
+  border-color: #deb3b3;
+  border-width: 0.1rem;
+  background: #eae0e0b5;
 }
 
 
