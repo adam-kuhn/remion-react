@@ -91,3 +91,16 @@ img {
   position: absolute;
 }
 
+.destroy {
+  width: 104%;
+}
+
+.view {
+  display: flex;
+  justify-content: space-between;
+  min-width: 200px;
+}
+
+.todo-list li .destroy {
+  position: relative;
+}

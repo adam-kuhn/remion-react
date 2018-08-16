@@ -130,11 +130,11 @@ var app = app || {};
               <label onDoubleClick={this.handleEdit}>
                 {this.props.todo.title}
               </label>
-              {this.props.todo.timeStamp && <p>Time Completed: {this.props.todo.timeStamp}</p>}
               <button className='destroy' onClick={this.areYouSure} />
               {this.state.areYouSure && <AreYouSure destroy={this.props.onDestroy}
                 reset={this.reset} />}
             </div>
+						{this.props.todo.timeStamp && <p>Time Completed: {this.props.todo.timeStamp}</p>}
             <input
               ref="editField"
               className="edit"
