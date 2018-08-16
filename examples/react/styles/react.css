@@ -43,11 +43,13 @@ img {
 
 .menu-btn {
   background-color: #c8c8e2;
+  margin-top: 0.5rem;
   padding: 0.8rem;
   margin-right: 0.6rem;
   border-style: solid;
   border-color: #00000054;
   border-width: 0.1rem;
+  height: 3rem;
 }
 
 .menu-btn:hover {
