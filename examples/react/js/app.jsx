@@ -16,6 +16,7 @@ var app = app || {};
   var PriorityDropDown = app.PriorityDropDown
   var ImportTasks = app.ImportTasks
   var ExportTasks = app.ExportTasks
+  var PreSetTasks = app.PreSetTasks
 
   var ENTER_KEY = 13
 
@@ -176,6 +177,7 @@ var app = app || {};
           <section className="main">
             <ImportTasks todos={todos} update={this.update}/>
             <ExportTasks todos={todos}/>
+            <PreSetTasks />
             <input
               id="toggle-all"
               className="toggle-all"
