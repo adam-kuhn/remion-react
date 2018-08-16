@@ -14,6 +14,7 @@ var app = app || {};
   var TodoItem = app.TodoItem
   var DuplicateAlert = app.DuplicateAlert
   var PriorityDropDown = app.PriorityDropDown
+  var ImportTasks = app.ImportTasks
   var ExportTasks = app.ExportTasks
 
   var ENTER_KEY = 13
@@ -173,6 +174,7 @@ var app = app || {};
       if (todos.length) {
         main = (
           <section className="main">
+            <ImportTasks todos={todos} update={this.update}/>
             <ExportTasks todos={todos}/>
             <input
               id="toggle-all"
@@ -198,6 +200,7 @@ var app = app || {};
               <img src='./styles/images/logo_remion.png' />
               <h1>My Tasks</h1>
             </div>
+
             {this.state.duplicate && <DuplicateAlert reset={this.resetDuplicate}/>}
             <input
               className="new-todo"
