@@ -108,3 +108,7 @@ img {
 .completed {
   color: green;
 }
+
+.todo-list li .toggle {
+  margin: 18px 1px 1px 3px;
+}
