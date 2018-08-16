@@ -36,7 +36,7 @@ var app = app || {};
       }
       return (
         <div className='priority'>
-          <button className='menu-btn' type='button' onClick={this.openMenu}>Priority</button>
+          <button className='main-btn' type='button' onClick={this.openMenu}>Priority</button>
           <p>{this.props.todo.priority === 6 ? '' : this.props.todo.priority}</p>
           {this.state.showMenu &&
             <div className='drop-down'>
