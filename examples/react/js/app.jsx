@@ -7,32 +7,19 @@ var app = app || {};
 
 (function () {
   'use strict'
-  // actions?
   app.ALL_TODOS = 'all'
   app.ACTIVE_TODOS = 'active'
   app.COMPLETED_TODOS = 'completed'
   var TodoFooter = app.TodoFooter
   var TodoItem = app.TodoItem
+  var DuplicateAlert = app.DuplicateAlert
   var PriorityDropDown = app.PriorityDropDown
+  var ExportTasks = app.ExportTasks
 
   var ENTER_KEY = 13
 
-  const DuplicateAlert = React.createClass({
-    render: function () {
-      return (
-        <div>
-          {swal('Oops!', 'This task has already been entered. Please enter a new task.', 'info')
-            .then(() => {
-              this.props.reset()
-            })}
-        </div>
-      )
-    }
-  })
-
   var TodoApp = React.createClass({
     getInitialState: function () {
-      // creating state
       return {
         nowShowing: app.ALL_TODOS,
         editing: null,
@@ -127,13 +114,10 @@ var app = app || {};
 
       var shownTodos = todos.filter(function (todo) {
         switch (this.state.nowShowing) {
-          // show todos that are not completed
           case app.ACTIVE_TODOS:
             return !todo.completed
-            // show todos that are completed
           case app.COMPLETED_TODOS:
             return todo.completed
-            // show all
           default:
             return true
         }
@@ -148,7 +132,6 @@ var app = app || {};
         return 0
       }
       shownTodos.sort(compare)
-      console.log(shownTodos)
       var todoItems = shownTodos.map(function (todo) {
         return (
           <div className='todo-item'>
@@ -190,6 +173,7 @@ var app = app || {};
       if (todos.length) {
         main = (
           <section className="main">
+            <ExportTasks todos={todos}/>
             <input
               id="toggle-all"
               className="toggle-all"
