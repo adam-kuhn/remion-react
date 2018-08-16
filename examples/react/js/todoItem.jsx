@@ -134,7 +134,7 @@ var app = app || {};
               {this.state.areYouSure && <AreYouSure destroy={this.props.onDestroy}
                 reset={this.reset} />}
             </div>
-						{this.props.todo.timeStamp && <p>Time Completed: {this.props.todo.timeStamp}</p>}
+						{this.props.todo.timeStamp && <p className='completed'>Time Completed: {this.props.todo.timeStamp}</p>}
             <input
               ref="editField"
               className="edit"
