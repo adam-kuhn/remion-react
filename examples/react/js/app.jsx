@@ -13,23 +13,11 @@ var app = app || {};
   app.COMPLETED_TODOS = 'completed'
   var TodoFooter = app.TodoFooter
   var TodoItem = app.TodoItem
+  var DuplicateAlert = app.DuplicateAlert
   var PriorityDropDown = app.PriorityDropDown
   var ExportTasks = app.ExportTasks
 
   var ENTER_KEY = 13
-
-  const DuplicateAlert = React.createClass({
-    render: function () {
-      return (
-        <div>
-          {/* {swal('Oops!', 'This task has already been entered. Please enter a new task.', 'info')
-            .then(() => {
-              this.props.reset()
-            })} */}
-        </div>
-      )
-    }
-  })
 
   var TodoApp = React.createClass({
     getInitialState: function () {
