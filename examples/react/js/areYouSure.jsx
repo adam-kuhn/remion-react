@@ -7,8 +7,7 @@ var app = app || {};
     render: function () {
       return (
         <div>
-          <p>wired up</p>
-          {/* {swal({
+          {swal({
               title: 'Are you sure?',
               text: 'This item will be permanently deleted!',
               icon: 'warning',
@@ -24,7 +23,7 @@ var app = app || {};
                   swal('OK!', 'You will finish this task one day...', 'info')
                   this.props.reset()
                 }
-              })} */}
+              })}
         </div>
       )
     }

@@ -7,11 +7,10 @@ var app = app || {};
     render: function () {
       return (
         <div>
-          <p>wired up</p>
-          {/* {swal('Oops!', 'This task has already been entered. Please enter a new task.', 'info')
+          {swal('Oops!', 'This task has already been entered. Please enter a new task.', 'info')
             .then(() => {
               this.props.reset()
-            })} */}
+            })}
         </div>
       )
     }
