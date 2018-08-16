@@ -9,10 +9,6 @@ var app = app || {};
       let csvContent = 'data:text/csv;charset=utf-8,'
       const todos = this.props.todos
       for (let todo of todos) {
-        // let priority = todo.priority
-        // if (priority === 6) {
-        //   priority = 'N/A'
-        // }
         let row = [todo.title, todo.completed, todo.priority === 6 ? 'N/A' : todo.priority]
         rows.push(row)
       }
