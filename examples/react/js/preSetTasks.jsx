@@ -55,6 +55,9 @@ var app = app || {};
     },
     selectTask: function (event) {
       console.log(event.target.value)
+      const complete = event.target.getAttribute('data-complete')
+      const priority = event.target.getAttribute('data-priority')
+      console.log(complete, priority)
       this.props.update()
       this.setState({
         showMenu: false
@@ -63,7 +66,10 @@ var app = app || {};
     render: function () {
       const SetTasks = this.state.preSet.map((todo, idx) => {
         return (
-          <button key={`presets${idx}`} type='button' onClick={this.selectTask} value={todo.text}>{todo.text}</button>
+          <button key={`presets${idx}`} type='button' onClick={this.selectTask} 
+          value={todo.text}
+          data-complete={todo.isComplete}
+          data-priority={todo.priority}>{`Task: ${todo.text} Priority: ${todo.priority}`}</button>
         )
       } )
       return (
