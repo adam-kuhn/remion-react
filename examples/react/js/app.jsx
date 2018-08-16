@@ -177,7 +177,7 @@ var app = app || {};
           <section className="main">
             <ImportTasks todos={todos} update={this.update}/>
             <ExportTasks todos={todos}/>
-            <PreSetTasks />
+            <PreSetTasks todos={todos} update={this.update}/>
             <input
               id="toggle-all"
               className="toggle-all"
