@@ -45,7 +45,9 @@ img {
   background-color: #c8c8e2;
   padding: 0.8rem;
   margin-right: 0.6rem;
-  border-radius: 0.8rem;
+  border-style: solid;
+  border-color: #00000054;
+  border-width: 0.1rem;
 }
 
 .drop-down {
@@ -53,13 +55,15 @@ img {
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
-  background-color: #90b2d2;
-  width: 5.2rem;
+  background-color: #d8d8ea;
+  width: 5.1rem;
   padding: 1rem 0;
   margin-left: -0.63rem;
   margin-top: 3rem;
-  border-radius: 1rem;
   z-index: 1;
+  border-style: solid;
+  border-color: #868697;
+  border-width: 0.1rem;
 }
 
 
