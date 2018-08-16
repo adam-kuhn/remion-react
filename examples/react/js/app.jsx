@@ -7,7 +7,6 @@ var app = app || {};
 
 (function () {
   'use strict'
-  // actions?
   app.ALL_TODOS = 'all'
   app.ACTIVE_TODOS = 'active'
   app.COMPLETED_TODOS = 'completed'
@@ -21,7 +20,6 @@ var app = app || {};
 
   var TodoApp = React.createClass({
     getInitialState: function () {
-      // creating state
       return {
         nowShowing: app.ALL_TODOS,
         editing: null,
@@ -116,13 +114,10 @@ var app = app || {};
 
       var shownTodos = todos.filter(function (todo) {
         switch (this.state.nowShowing) {
-          // show todos that are not completed
           case app.ACTIVE_TODOS:
             return !todo.completed
-            // show todos that are completed
           case app.COMPLETED_TODOS:
             return todo.completed
-            // show all
           default:
             return true
         }
@@ -137,7 +132,6 @@ var app = app || {};
         return 0
       }
       shownTodos.sort(compare)
-      console.log(shownTodos)
       var todoItems = shownTodos.map(function (todo) {
         return (
           <div className='todo-item'>
