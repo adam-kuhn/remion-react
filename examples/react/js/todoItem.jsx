@@ -11,32 +11,8 @@ var app = app || {};
 
   var ESCAPE_KEY = 27
   var ENTER_KEY = 13
+  var AreYouSure = app.AreYouSure
 
-  const AreYouSure = React.createClass({
-    render: function () {
-      return (
-        <div>
-          {/* {swal({
-            title: 'Are you sure?',
-            text: 'This item will be permanently deleted!',
-            icon: 'warning',
-            buttons: true,
-            dangerMode: true
-          })
-            .then((yesDelete) => {
-              if (yesDelete) {
-                this.props.destroy()
-                swal('POOF!', 'The task is gone.', 'success')
-                this.props.reset()
-              } else {
-                swal('OK!', 'You will finish this task one day...', 'info')
-                this.props.reset()
-              }
-            })} */}
-        </div>
-      )
-    }
-  })
   app.TodoItem = React.createClass({
     handleSubmit: function (event) {
       var val = this.state.editText.trim()
@@ -134,7 +110,7 @@ var app = app || {};
               {this.state.areYouSure && <AreYouSure destroy={this.props.onDestroy}
                 reset={this.reset} />}
             </div>
-						{this.props.todo.timeStamp && <p className='completed'>Time Completed: {this.props.todo.timeStamp}</p>}
+            {this.props.todo.timeStamp && <p className='completed'>Time Completed: {this.props.todo.timeStamp}</p>}
             <input
               ref="editField"
               className="edit"
