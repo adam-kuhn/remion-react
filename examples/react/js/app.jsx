@@ -174,7 +174,7 @@ var app = app || {};
       if (todos.length) {
         main = (
           <section className="main">
-            <ImportTasks todos={todos}/>
+            <ImportTasks todos={todos} update={this.update}/>
             <ExportTasks todos={todos}/>
             <input
               id="toggle-all"

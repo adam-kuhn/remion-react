@@ -52,6 +52,7 @@ var app = app || {};
         todos.push(newTodo)
       }
       console.log(todos)
+      this.props.update()
     },
     errorHandler: function (e) {
       if (e.target.error.name === 'NotReadableError') {
