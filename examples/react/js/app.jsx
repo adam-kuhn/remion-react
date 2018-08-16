@@ -14,6 +14,7 @@ var app = app || {};
   var TodoFooter = app.TodoFooter
   var TodoItem = app.TodoItem
   var PriorityDropDown = app.PriorityDropDown
+  var ImportTasks = app.ImportTasks
 
   var ENTER_KEY = 13
 
@@ -214,6 +215,7 @@ var app = app || {};
               <img src='./styles/images/logo_remion.png' />
               <h1>My Tasks</h1>
             </div>
+            <ImportTasks />
             {this.state.duplicate && <DuplicateAlert reset={this.resetDuplicate}/>}
             <input
               className="new-todo"
