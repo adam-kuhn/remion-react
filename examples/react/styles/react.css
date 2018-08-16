@@ -41,7 +41,7 @@ img {
   margin-right: 1rem;
 }
 
-.menu-btn {
+.main-btn {
   background-color: #c8c8e2;
   margin-top: 0.5rem;
   padding: 0.8rem;
@@ -52,7 +52,7 @@ img {
   height: 3rem;
 }
 
-.menu-btn:hover {
+.main-btn:hover {
   border-style: solid;
   border-color: #deb3b3;
   border-width: 0.1rem;
@@ -80,6 +80,11 @@ img {
   border-color: #deb3b3;
   border-width: 0.1rem;
   background: #eae0e0b5;
+}
+
+.export {
+  margin-left: 0.4rem;
+  font-size: 1rem;
 }
 
 

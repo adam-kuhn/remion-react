@@ -26,7 +26,7 @@ var app = app || {};
 
     render: function () {
       return (
-        <button type='button' onClick={this.click}>Export</button>
+        <button className='main-btn export' type='button' onClick={this.click}>Download Tasks</button>
       )
     }
   })
