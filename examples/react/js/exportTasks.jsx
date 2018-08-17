@@ -22,7 +22,7 @@ var app = app || {};
 
     render: function () {
       return (
-        <button className='main-btn export' type='button' onClick={this.click}>Download Tasks</button>
+        <button className='main-btn task-btn' type='button' onClick={this.click}>Download Task List</button>
       )
     }
   })

@@ -9,7 +9,11 @@ var app = app || {};
         <div>
           {swal('Oops!', 'This task has already been entered. Please enter a new task.', 'info')
             .then(() => {
-              this.props.reset()
+              if (this.props.reset) {
+                this.props.reset()
+              } else {
+                this.props.preSetReset()
+              }
             })}
         </div>
       )

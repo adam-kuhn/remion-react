@@ -48,7 +48,7 @@ img {
   padding: 0.8rem;
   margin-right: 0.6rem;
   border-style: solid;
-  border-color: #00000054;
+  border-color: #48343414;
   border-width: 0.1rem;
   height: 3rem;
 }
@@ -66,13 +66,13 @@ img {
   justify-content: space-evenly;
   flex-direction: column;
   background-color: #d8d8ea;
-  width: 5.1rem;
+  width: 4.3rem;
   padding: 1rem 0;
   margin-left: -0.63rem;
   margin-top: 3rem;
   z-index: 1;
   border-style: solid;
-  border-color: #868697;
+  border-color: #bebcd4;
   border-width: 0.1rem;
 }
 
@@ -83,9 +83,36 @@ img {
   background: #eae0e0b5;
 }
 
-.export {
+.preset-tasks {
+  width: 7.14rem;
+  position: absolute;
+  display: flex;
   margin-left: 0.4rem;
-  font-size: 1rem;
+  justify-content: space-evenly;
+  flex-direction: column;
+  background-color: #d8d8ea;
+  padding: 1rem 0;
+  z-index: 1;
+  border-style: solid;
+  border-color: #bebcd4;
+  border-width: 0.1rem;
+}
+
+.preset-tasks button {
+  text-align: left;
+  font-size: 0.9rem;
+  padding: 0.4rem 0 0.4rem 0.2rem;
+}
+
+.preset-tasks button:hover {
+  border-style: solid;
+  border-color: #deb3b3;
+  border-width: 0.1rem;
+  background: #eae0e0b5;
+}
+
+.task-btn {
+  margin-left: 0.4rem;
 }
 
  .edit {
@@ -112,4 +139,17 @@ img {
 
 .todo-list li .toggle {
   margin: 18px 1px 1px 3px;
+}
+
+.task-function {
+  display: flex;
+  justify-content: space-around
+}
+
+.import {
+  padding-left: 0.4rem;
+}
+
+button {
+  font-size: 1rem;
 }

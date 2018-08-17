@@ -54,7 +54,8 @@ var app = app || {};
     },
     render: function () {
       return (
-        <div>
+        <div className='import'>
+          <p>Upload tasks from file.</p>
           <input
             type='file'
             id='csvFileInput'
