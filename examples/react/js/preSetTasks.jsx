@@ -2,12 +2,14 @@ var app = app || {};
 
 (function () {
   'use strict'
+  var DuplicateAlert = app.DuplicateAlert
 
   app.PreSetTasks = React.createClass({
     getInitialState: function () {
       return {
         showMenu: false,
-        preSet: []
+        preSet: [],
+        duplicate: false
       }
     },
 
@@ -39,17 +41,34 @@ var app = app || {};
     },
     selectTask: function (event) {
       const todos = this.props.todos
-      const newTodo = {
-        title: event.target.value,
-        id: event.target.key,
-        timeStamp: '',
-        priority: Number(event.target.getAttribute('data-priority')),
-        completed: event.target.getAttribute('data-complete') === 'true'
+      let duplicate = todos.filter(todo => {
+        return todo.title === event.target.value
+      })
+      if (duplicate.length >= 1) {
+        this.setState({
+          duplicate: true,
+          showMenu: false
+        })
+        this.props.update()
+      } else {
+        const newTodo = {
+          title: event.target.value,
+          id: event.target.key,
+          timeStamp: '',
+          priority: Number(event.target.getAttribute('data-priority')),
+          completed: event.target.getAttribute('data-complete') === 'true'
+        }
+        todos.push(newTodo)
+        this.props.update()
+        this.setState({
+          showMenu: false,
+          duplicate: false
+        })
       }
-      todos.push(newTodo)
-      this.props.update()
+    },
+    reset: function () {
       this.setState({
-        showMenu: false
+        duplicate: false
       })
     },
     render: function () {
@@ -60,6 +79,7 @@ var app = app || {};
             <div className='drop-down'>
               {this.state.preSets}
             </div>}
+          {this.state.duplicate && <DuplicateAlert preSetReset={this.reset}/>}
         </div>
       )
     }
