@@ -8,6 +8,18 @@ var app = app || {};
       let rows = [['Task Name', 'Task Complete', 'Task Priority']]
       let csvContent = 'data:text/csv;charset=utf-8,'
       const todos = this.props.todos
+      
+      function compare (a, b) {
+        if (a.priority < b.priority) {
+          return -1
+        }
+        if (a.priority > b.priority) {
+          return 1
+        }
+        return 0
+      }
+      todos.sort(compare)
+
       for (let todo of todos) {
         let row = [todo.title, todo.completed, todo.priority === 6 ? 'N/A' : todo.priority]
         rows.push(row)
