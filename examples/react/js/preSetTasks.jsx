@@ -24,7 +24,7 @@ var app = app || {};
               <button key={`presets${idx}`} type='button' onClick={this.selectTask}
                 value={todo.text}
                 data-complete={todo.isComplete}
-                data-priority={todo.priority}>{`Task: ${todo.text} Priority: ${todo.priority}`}</button>
+                data-priority={todo.priority}>{`${todo.text}  Priority: ${todo.priority}`}</button>
             )
           })
           this.setState({
@@ -73,10 +73,10 @@ var app = app || {};
     },
     render: function () {
       return (
-        <div className='priority'>
-          <button className='main-btn' type='button' onClick={this.openMenu}>Pre Set</button>
+        <div className='x'>
+          <button className='main-btn task-btn' type='button' onClick={this.openMenu}>Select a Task</button>
           {this.state.showMenu &&
-            <div className='drop-down'>
+            <div className='preset-tasks'>
               {this.state.preSets}
             </div>}
           {this.state.duplicate && <DuplicateAlert preSetReset={this.reset}/>}

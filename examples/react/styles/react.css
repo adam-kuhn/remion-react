@@ -83,7 +83,35 @@ img {
   background: #eae0e0b5;
 }
 
-.export {
+.preset-tasks {
+  width: 7.14rem;
+  position: absolute;
+  display: flex;
+  margin-left: 0.4rem;
+  justify-content: space-evenly;
+  flex-direction: column;
+  background-color: #d8d8ea;
+  padding: 1rem 0;
+  z-index: 1;
+  border-style: solid;
+  border-color: #868697;
+  border-width: 0.1rem;
+}
+
+.preset-tasks button {
+  text-align: left;
+  font-size: 0.9rem;
+  padding: 0.4rem 0 0.4rem 0.2rem;
+}
+
+.preset-tasks button:hover {
+  border-style: solid;
+  border-color: #deb3b3;
+  border-width: 0.1rem;
+  background: #eae0e0b5;
+}
+
+.task-btn {
   margin-left: 0.4rem;
   font-size: 1rem;
 }
@@ -112,4 +140,13 @@ img {
 
 .todo-list li .toggle {
   margin: 18px 1px 1px 3px;
+}
+
+.task-function {
+  display: flex;
+  justify-content: space-around
+}
+
+.import {
+  padding-left: 0.4rem;
 }

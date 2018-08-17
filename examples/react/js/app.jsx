@@ -175,9 +175,11 @@ var app = app || {};
       if (todos.length) {
         main = (
           <section className="main">
-            <ImportTasks todos={todos} update={this.update}/>
-            <ExportTasks todos={todos}/>
-            <PreSetTasks todos={todos} update={this.update}/>
+            <div className='task-function'>
+              <ImportTasks todos={todos} update={this.update}/>
+              <PreSetTasks todos={todos} update={this.update}/>
+              <ExportTasks todos={todos}/>
+            </div>
             <input
               id="toggle-all"
               className="toggle-all"
