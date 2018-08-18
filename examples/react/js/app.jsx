@@ -175,11 +175,6 @@ var app = app || {};
       if (todos.length) {
         main = (
           <section className="main">
-            <div className='task-function'>
-              <ImportTasks todos={todos} update={this.update}/>
-              <PreSetTasks todos={todos} update={this.update}/>
-              <ExportTasks todos={todos}/>
-            </div>
             <input
               id="toggle-all"
               className="toggle-all"
@@ -203,6 +198,11 @@ var app = app || {};
             <div className="title">
               <img src='./styles/images/logo_remion.png' />
               <h1>My Tasks</h1>
+            </div>
+						<div className='task-function'>
+              <ImportTasks todos={todos} update={this.update}/>
+              <PreSetTasks todos={todos} update={this.update}/>
+              <ExportTasks todos={todos}/>
             </div>
 
             {this.state.duplicate && <DuplicateAlert reset={this.resetDuplicate}/>}
