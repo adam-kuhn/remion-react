@@ -21,7 +21,7 @@ var app = app || {};
       todos.sort(compare)
 
       for (let todo of todos) {
-        let row = [todo.title, todo.completed, todo.priority === 6 ? 'N/A' : todo.priority]
+        let row = [todo.title, todo.completed === false ? 'No' : 'Yes', todo.priority === 6 ? 'N/A' : todo.priority]
         rows.push(row)
       }
       rows.forEach(function (rowArray) {

@@ -199,7 +199,7 @@ var app = app || {};
               <img src='./styles/images/logo_remion.png' />
               <h1>My Tasks</h1>
             </div>
-						<div className='task-function'>
+            <div className='task-function'>
               <ImportTasks todos={todos} update={this.update}/>
               <PreSetTasks todos={todos} update={this.update}/>
               <ExportTasks todos={todos}/>
